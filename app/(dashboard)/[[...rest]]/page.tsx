@@ -1,3 +1,5 @@
+import { OrganizationProfile } from "@clerk/nextjs";
+
 export default function Home() {
-	return <div>Dashboard Layout page</div>;
+	return <div>Dashboard layout</div>;
 }
