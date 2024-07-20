@@ -13,8 +13,8 @@ export const InviteButton = () => {
 					Invite members
 				</Button>
 			</DialogTrigger>
-			<DialogContent className="p-0 bg-transparent max-w-max">
-				<OrganizationProfile />
+			<DialogContent className="p-0 bg-transparent max-w-max border-none">
+				<OrganizationProfile routing="virtual" />
 			</DialogContent>
 		</Dialog>
 	);
