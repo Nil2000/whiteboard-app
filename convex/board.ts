@@ -3,16 +3,19 @@ import { v } from "convex/values";
 import { mutation } from "./_generated/server";
 
 const images = [
-	"/img1.png",
-	"/img2.svg",
-	"/img3.png",
-	"/img4.png",
-	"/img5.png",
-	"/img6.png",
-	"/img7.png",
+	"placeholders/img1.svg",
+	"placeholders/img2.svg",
+	"placeholders/img3.svg",
+	"placeholders/img4.svg",
+	"placeholders/img5.svg",
+	"placeholders/img6.svg",
+	"placeholders/img7.svg",
+	"placeholders/img8.svg",
+	"placeholders/img9.svg",
+	"placeholders/img10.svg",
 ];
 
-export const createBoard = mutation({
+export const create = mutation({
 	args: {
 		orgId: v.string(),
 		title: v.string(),
