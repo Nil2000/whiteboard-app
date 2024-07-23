@@ -39,3 +39,42 @@ export const create = mutation({
 		return board;
 	},
 });
+
+export const remove = mutation({
+	args: {
+		id: v.id("boards"),
+	},
+	handler: async (ctx, args) => {
+		const userId = await ctx.auth.getUserIdentity();
+
+		if (!userId) {
+			throw new Error("Unauthorized");
+		}
+
+		//TODO : Lates delete from favourites as well
+
+		await ctx.db.delete(args.id);
+	},
+});
+
+export const update = mutation({
+	args: { id: v.id("boards"), title: v.string() },
+	handler: async (ctx, args) => {
+		const userId = await ctx.auth.getUserIdentity();
+		if (!userId) {
+			throw new Error("Unauthorized");
+		}
+		const title = args.title.trim();
+
+		if (!title) {
+			throw new Error("Title cannot be empty");
+		}
+
+		if (title.length > 60) {
+			throw new Error("Title cannot be more than 100 characters");
+		}
+
+		const board = await ctx.db.patch(args.id, { title });
+		return board;
+	},
+});

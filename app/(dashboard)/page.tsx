@@ -1,8 +1,8 @@
 "use client";
 import { useOrganization } from "@clerk/nextjs";
 
-import { EmptyBox } from "../_components/empty-org";
-import { BoardList } from "../_components/board-list";
+import { EmptyBox } from "./_components/empty-org";
+import { BoardList } from "./_components/board-list";
 
 interface DashboardPageProps {
 	searchParams: {
