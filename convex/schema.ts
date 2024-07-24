@@ -16,7 +16,7 @@ export default defineSchema({
 		}),
 	userFavourites: defineTable({
 		userId: v.string(),
-		boardId: v.string(),
+		boardId: v.id("boards"),
 		orgId: v.string(),
 	})
 		.index("by_board", ["boardId"])
