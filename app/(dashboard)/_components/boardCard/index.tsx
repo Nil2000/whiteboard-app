@@ -9,6 +9,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 import { MoreHorizontal } from "lucide-react";
 import { CardActions } from "@/components/card-actions";
+import { useApiMutation } from "@/hooks/useApiMutation";
+import { api } from "@/convex/_generated/api";
+import { toast } from "sonner";
 interface BoardCardProps {
 	id: string;
 	title: string;
@@ -33,6 +36,23 @@ export const BoardCard = ({
 	const { userId } = useAuth();
 	const authLabel = userId === authorId ? "You" : authorName;
 	const createdAtLabel = formatDistanceToNow(createdAt, { addSuffix: true });
+	const { mutate: onFav, pending: pendingFav } = useApiMutation(
+		api.board.favourite
+	);
+	const { mutate: onUnFav, pending: pendingUnFav } = useApiMutation(
+		api.board.unfavourite
+	);
+	const toggleFav = () => {
+		if (isFavourite) {
+			onUnFav({ id }).catch(() =>
+				toast.error("Failed to remove from favourites")
+			);
+		} else {
+			onFav({ id, orgId }).catch(() =>
+				toast.error("Failed to add to favourites")
+			);
+		}
+	};
 
 	return (
 		<Link href={`/board/${id}`}>
@@ -51,8 +71,8 @@ export const BoardCard = ({
 					authorLabel={authLabel}
 					createdAtLabel={createdAtLabel}
 					isFavourite={isFavourite}
-					onClick={() => {}}
-					disabled={false}
+					onClick={toggleFav}
+					disabled={pendingFav || pendingUnFav}
 				/>
 			</div>
 		</Link>
