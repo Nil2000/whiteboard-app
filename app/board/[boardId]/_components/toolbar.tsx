@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const Toolbar = () => {
 	return (
-		<div className="absolute top-[50%] left-2 flex flex-col gap-y-4 -translate-y-[50%] rounded-md">
+		<div className="absolute top-16 left-2 flex flex-col gap-y-4 rounded-md">
 			<div className="bg-white rounded-md p-1.5 flex flex-col gap-y-1 items-center shadow-md">
 				<div>Pencil</div>
 				<div>Square</div>
