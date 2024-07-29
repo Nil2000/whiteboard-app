@@ -49,56 +49,56 @@ export const Toolbar = ({
 					icon={Type}
 					onClick={() =>
 						setCanvasState({
-							mode: CanvasMode.Inseting,
-							layyerType: LayerType.Text,
+							mode: CanvasMode.Inserting,
+							layerType: LayerType.Text,
 						})
 					}
 					label="Text"
 					isActive={
-						canvasState.mode === CanvasMode.Inseting &&
-						canvasState.layyerType === LayerType.Text
+						canvasState.mode === CanvasMode.Inserting &&
+						canvasState.layerType === LayerType.Text
 					}
 				/>
 				<ToolButton
 					icon={StickyNote}
 					onClick={() =>
 						setCanvasState({
-							mode: CanvasMode.Inseting,
-							layyerType: LayerType.Note,
+							mode: CanvasMode.Inserting,
+							layerType: LayerType.Note,
 						})
 					}
 					label="Sticky note"
 					isActive={
-						canvasState.mode === CanvasMode.Inseting &&
-						canvasState.layyerType === LayerType.Note
+						canvasState.mode === CanvasMode.Inserting &&
+						canvasState.layerType === LayerType.Note
 					}
 				/>
 				<ToolButton
 					icon={Square}
 					onClick={() =>
 						setCanvasState({
-							mode: CanvasMode.Inseting,
-							layyerType: LayerType.Rectangle,
+							mode: CanvasMode.Inserting,
+							layerType: LayerType.Rectangle,
 						})
 					}
 					label="Rectangle"
 					isActive={
-						canvasState.mode === CanvasMode.Inseting &&
-						canvasState.layyerType === LayerType.Rectangle
+						canvasState.mode === CanvasMode.Inserting &&
+						canvasState.layerType === LayerType.Rectangle
 					}
 				/>
 				<ToolButton
 					icon={Circle}
 					onClick={() =>
 						setCanvasState({
-							mode: CanvasMode.Inseting,
-							layyerType: LayerType.Ellipse,
+							mode: CanvasMode.Inserting,
+							layerType: LayerType.Ellipse,
 						})
 					}
 					label="Ellipse"
 					isActive={
-						canvasState.mode === CanvasMode.Inseting &&
-						canvasState.layyerType === LayerType.Ellipse
+						canvasState.mode === CanvasMode.Inserting &&
+						canvasState.layerType === LayerType.Ellipse
 					}
 				/>
 				<ToolButton

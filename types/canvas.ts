@@ -19,7 +19,6 @@ export enum LayerType {
 
 export type RectangleLayer = {
 	type: LayerType.Rectangle;
-	id: string;
 	x: number;
 	y: number;
 	width: number;
@@ -30,11 +29,10 @@ export type RectangleLayer = {
 
 export type EllipseLayer = {
 	type: LayerType.Ellipse;
-	id: string;
 	x: number;
 	y: number;
-	rx: number;
-	ry: number;
+	width: number;
+	height: number;
 	fill: Color;
 	value?: string;
 };
@@ -59,7 +57,7 @@ export type TextLayer = {
 	width: number;
 };
 export type NoteLayer = {
-	type: LayerType.Text;
+	type: LayerType.Note;
 	x: number;
 	y: number;
 	fill: Color;
@@ -109,8 +107,8 @@ export type CanvasState =
 			mode: CanvasMode.Pencil;
 	  }
 	| {
-			mode: CanvasMode.Inseting;
-			layyerType:
+			mode: CanvasMode.Inserting;
+			layerType:
 				| LayerType.Ellipse
 				| LayerType.Rectangle
 				| LayerType.Text
@@ -126,6 +124,8 @@ export enum CanvasMode {
 	Translating,
 	Resizing,
 	Pencil,
-	Inseting,
+	Inserting,
 	Pressing,
 }
+
+export type Layer = RectangleLayer | EllipseLayer | TextLayer | NoteLayer;
