@@ -1,3 +1,4 @@
+import { colorToCss } from "@/lib/utils";
 import { RectangleLayer } from "@/types/canvas";
 import React from "react";
 
@@ -24,9 +25,9 @@ export default function Rectangle({
 			width={width}
 			height={height}
 			style={{ transform: `translate(${x}px,${y}px)` }}
-			fill="#000"
+			fill={fill ? colorToCss(fill) : "#000"}
 			strokeWidth={1}
-			stroke={"transparent"}
+			stroke={selectionColor || "transparent"}
 		/>
 	);
 }
