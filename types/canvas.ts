@@ -128,4 +128,9 @@ export enum CanvasMode {
 	Pressing,
 }
 
-export type Layer = RectangleLayer | EllipseLayer | TextLayer | NoteLayer;
+export type Layer =
+	| RectangleLayer
+	| EllipseLayer
+	| TextLayer
+	| NoteLayer
+	| PathLayer;
