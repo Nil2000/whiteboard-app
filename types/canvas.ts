@@ -115,6 +115,7 @@ export type CanvasState =
 				| LayerType.Note;
 	  }
 	| {
+			origin: Point;
 			mode: CanvasMode.Pressing;
 	  };
 
