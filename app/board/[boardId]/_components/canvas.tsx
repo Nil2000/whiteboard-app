@@ -32,6 +32,7 @@ import { LiveObject } from "@liveblocks/client";
 import { LayerComponent } from "./layer-component";
 import { set } from "date-fns";
 import { SelectionBox } from "./selection-box";
+import { SelectionToolbar } from "./selection-toolbar";
 const MAX_LAYERS = 100;
 interface CanvasProps {
 	boardId: string;
@@ -250,6 +251,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 				canUndo={history.canUndo()}
 				canRedo={history.canRedo()}
 			/>
+			<SelectionToolbar camera={camera} setLastUsedColor={setLastUsedColor} />
 			<svg
 				className="h-[100vh] w-[100vw]"
 				onWheel={onWheel}
