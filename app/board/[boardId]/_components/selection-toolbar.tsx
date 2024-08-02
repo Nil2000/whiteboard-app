@@ -6,7 +6,7 @@ import React, { memo } from "react";
 import { ColorPicker } from "./color-picker";
 import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
-import { Trash2 } from "lucide-react";
+import { BringToFront, SendToBack, Trash2 } from "lucide-react";
 import { useDeleteLayer } from "@/hooks/useDeleteLayer";
 interface SelectionToolbarProps {
 	camera: Camera;
@@ -27,6 +27,46 @@ export const SelectionToolbar = memo(
 			[selection, setLastUsedColor]
 		);
 
+		const moveToFront = useMutation(
+			({ storage }) => {
+				const layerIds = storage.get("layerIds");
+				const indices: number[] = [];
+
+				const arr = layerIds.toArray();
+
+				for (let i = 0; i < arr.length; i++) {
+					if (selection.includes(arr[i])) {
+						indices.push(i);
+					}
+				}
+
+				for (let i = indices.length - 1; i >= 0; i--) {
+					layerIds.move(indices[i], arr.length - 1 - (indices.length - 1 - i));
+				}
+			},
+			[selection]
+		);
+
+		const moveToBack = useMutation(
+			({ storage }) => {
+				const layerIds = storage.get("layerIds");
+				const indices: number[] = [];
+
+				const arr = layerIds.toArray();
+
+				for (let i = 0; i < arr.length; i++) {
+					if (selection.includes(arr[i])) {
+						indices.push(i);
+					}
+				}
+
+				for (let i = 0; i < indices.length; i++) {
+					layerIds.move(indices[i], i);
+				}
+			},
+			[selection]
+		);
+
 		const deleteLayer = useDeleteLayer();
 		const selectionBounds = useSelectionBounds();
 		if (!selectionBounds) return null;
@@ -41,6 +81,18 @@ export const SelectionToolbar = memo(
 				}}
 			>
 				<ColorPicker onChange={setFill} />
+				<div className="flex flex-col">
+					<Hint label="Bring to front">
+						<Button variant={"board"} size={"icon"} onClick={moveToFront}>
+							<BringToFront />
+						</Button>
+					</Hint>
+					<Hint label="Send to back" side="bottom">
+						<Button variant={"board"} size={"icon"} onClick={moveToBack}>
+							<SendToBack />
+						</Button>
+					</Hint>
+				</div>
 				<div className="flex items-center pl-2 ml-2 border-l border-neutral-200">
 					<Hint label="Delete">
 						<Button variant={"board"} size={"icon"} onClick={deleteLayer}>
