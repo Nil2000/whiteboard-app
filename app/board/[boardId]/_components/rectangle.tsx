@@ -26,7 +26,7 @@ export default function Rectangle({
 			height={height}
 			style={{ transform: `translate(${x}px,${y}px)` }}
 			fill={fill ? colorToCss(fill) : "#000"}
-			strokeWidth={1}
+			strokeWidth={3}
 			stroke={selectionColor || "transparent"}
 		/>
 	);

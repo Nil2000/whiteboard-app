@@ -49,7 +49,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 	const [lastUsedColor, setLastUsedColor] = useState<Color>({
 		r: 0,
 		g: 0,
-		b: 244,
+		b: 0,
 	});
 
 	const insertLayer = useMutation(
