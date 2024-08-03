@@ -2,6 +2,7 @@ import { CanvasMode, LayerType } from "@/types/canvas";
 import { useStorage } from "@liveblocks/react/suspense";
 import React, { memo } from "react";
 import Rectangle from "./rectangle";
+import { Ellipse } from "./ellipse";
 
 interface LayerComponentProps {
 	layerId: string;
@@ -21,6 +22,15 @@ export const LayerComponent = memo(
 			return null;
 		}
 		switch (layer.type) {
+			case LayerType.Ellipse:
+				return (
+					<Ellipse
+						layerId={layerId}
+						layer={layer}
+						onPointerDown={onLayerPointerDown}
+						selectionColor={selectionColor}
+					/>
+				);
 			case LayerType.Rectangle:
 				return (
 					<Rectangle
