@@ -38,6 +38,7 @@ import { SelectionBox } from "./selection-box";
 import { SelectionToolbar } from "./selection-toolbar";
 import { update } from "@/convex/board";
 import { Path } from "./path";
+import useDisableScrollBounce from "@/hooks/useDisableScrollBounce";
 const MAX_LAYERS = 100;
 interface CanvasProps {
 	boardId: string;
@@ -48,6 +49,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 	const [canvasState, setCanvasState] = useState<CanvasState>({
 		mode: CanvasMode.None,
 	});
+	useDisableScrollBounce();
 	const history = useHistory();
 	const [camera, setCamera] = useState<Camera>({ x: 0, y: 0 });
 	const [lastUsedColor, setLastUsedColor] = useState<Color>({
