@@ -5,6 +5,8 @@ import Rectangle from "./rectangle";
 import { Ellipse } from "./ellipse";
 import { Text } from "./text";
 import { Note } from "./note";
+import { Path } from "./path";
+import { colorToCss } from "@/lib/utils";
 
 interface LayerComponentProps {
 	layerId: string;
@@ -24,6 +26,18 @@ export const LayerComponent = memo(
 			return null;
 		}
 		switch (layer.type) {
+			case LayerType.Path:
+				return (
+					<Path
+						key={layerId}
+						x={layer.x}
+						y={layer.y}
+						points={layer.points}
+						fill={layer.fill ? colorToCss(layer.fill) : "#000"}
+						stroke={selectionColor}
+						onPointerDown={(e) => onLayerPointerDown(e, layerId)}
+					/>
+				);
 			case LayerType.Note:
 				return (
 					<Note
