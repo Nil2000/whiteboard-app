@@ -55,3 +55,4 @@ export const CursorPresence = memo(() => {
 		</>
 	);
 });
+CursorPresence.displayName = "CursorPresence";

@@ -104,3 +104,4 @@ export const SelectionToolbar = memo(
 		);
 	}
 );
+SelectionToolbar.displayName = "SelectionToolbar";

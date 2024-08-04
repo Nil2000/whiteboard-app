@@ -1,7 +1,7 @@
 import React from "react";
 import { Sidebar } from "./_components/Sidebar";
 import { OrgSidebar } from "./_components/org-sidebar";
-import { Navbar } from "./_components/Navbar";
+import { Navbar } from "./_components/navbar";
 
 function DashBoardLayout({ children }: { children: React.ReactNode }) {
 	return (
